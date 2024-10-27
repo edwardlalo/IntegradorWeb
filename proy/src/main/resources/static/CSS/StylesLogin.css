@@ -256,7 +256,7 @@ body{
   .btn-intranet {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #21264D;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -264,7 +264,7 @@ body{
   }
   
   .btn-intranet:hover {
-    background-color: #0056b3;
+    background-color: #2b3161;
   }
   
 
@@ -279,4 +279,23 @@ body{
     .col-2{
         width: 100%;
     }
+}
+
+.return-home {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-return {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #21264D;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-return:hover {
+    background-color: #2b3161;
 }

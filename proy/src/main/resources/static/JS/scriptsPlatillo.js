@@ -1,6 +1,6 @@
 const listaPlatillosSeleccionados = document.getElementById('listaPlatillosSeleccionados');
 
-// Función para guardar los platillos en localStorage
+//Función para guardar los platillos en localStorage
 function guardarPlatillos() {
     const platillos = [];
     const existingItems = listaPlatillosSeleccionados.getElementsByTagName('li');
@@ -14,7 +14,7 @@ function guardarPlatillos() {
     localStorage.setItem('platillosSeleccionados', JSON.stringify(platillos));
 }
 
-// Función para agregar platillo
+//Función para agregar platillo
 function agregarPlatillo(nombre, precio, cantidad, imagen) {
     const platillosSeleccionados = JSON.parse(localStorage.getItem('platillosSeleccionados')) || [];
 
@@ -27,11 +27,11 @@ function agregarPlatillo(nombre, precio, cantidad, imagen) {
     }
 
     localStorage.setItem('platillosSeleccionados', JSON.stringify(platillosSeleccionados));
-    guardarPlatillos(); // Llama a guardarPlatillos después de agregar
+    guardarPlatillos(); //Llama a guardarPlatillos después de agregar
 }
 
 
-// Añadir eventos a los botones de seleccionar
+//Añadir eventos a los botones de seleccionar
 document.querySelectorAll('.boton-seleccionar').forEach(button => {
     button.addEventListener('click', () => {
         const nombrePlatillo = button.getAttribute('data-nombre');
@@ -42,7 +42,7 @@ document.querySelectorAll('.boton-seleccionar').forEach(button => {
         cantidadInput.min = '1';
         cantidadInput.value = '1';
 
-        // Verificar si el platillo ya está en la lista
+        //Verificar si el platillo ya está en la lista
         let exists = false;
         const existingItems = listaPlatillosSeleccionados.getElementsByTagName('li');
 
@@ -79,17 +79,17 @@ document.querySelectorAll('.boton-seleccionar').forEach(button => {
 document.getElementById('continuarPago').addEventListener('click', function() {
     const listaPlatillosSeleccionados = document.getElementById('listaPlatillosSeleccionados');
     
-    // Verifica si hay platillos seleccionados
+    //Verifica si hay platillos seleccionados
     if (listaPlatillosSeleccionados.children.length === 0) {
         // Muestra la alerta
         const confirmar = confirm("No has seleccionado ningún platillo. ¿Deseas continuar?");
         
         if (confirmar) {
-            // Si el usuario acepta, redirige a la página de pago
+            //Si el usuario acepta redirige a pago
             window.location.href = 'pago';
         }
     } else {
-        // Si hay platillos seleccionados, simplemente redirige a la página de pago
+        // Si hay platillos seleccionados redirige pago
         window.location.href = 'pago';
     }
 });

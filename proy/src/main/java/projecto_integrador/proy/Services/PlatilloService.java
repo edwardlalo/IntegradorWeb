@@ -10,8 +10,7 @@ public class PlatilloService {
 
     @Autowired
     private PlatilloRepository platilloRepository;
-
-    // Método para obtener todos los platillos
+    // Método para obtener todos los platillos de la bd con ayuda del repository
     public List<Platillo> findAll() {
         return platilloRepository.findAll();
     }

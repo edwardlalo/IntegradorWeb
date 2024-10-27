@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="CSS/StylesInicio.css" />
     <link rel="stylesheet" href="CSS/StylesGeneral.css" />
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <!--SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
   </head>
   <body>
     <header>
@@ -18,7 +21,13 @@
         </div>
         <ul class="nav-links" id="navLinks">
           <li><a href="inicio">Inicio</a></li>
-          <li><a href="reservaMesas">Realizar reserva</a></li>
+          <!-- Condición para mostrar el enlace de reserva o una alerta -->
+        <li th:if="${usuario != null}">
+          <a href="reservaMesas">Realizar reserva</a> <!-- Redirecciona si hay usuario en sesion -->
+        </li>
+        <li th:if="${usuario == null}">
+          <a href="#" onclick="mostrarAlerta()">Realizar reserva</a> <!-- Llama a una función SweetAlert si no hay usuario -->
+        </li>
         </ul>
         <div class="logo">
           <a href="#">
@@ -108,5 +117,15 @@
       </div>
     </footer>
     <script src="JS/script.js"></script>
+    <script>
+      function mostrarAlerta() {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Atención',
+          text: 'Debes iniciar sesión para realizar una reserva.',
+          confirmButtonText: 'OK'
+        });
+      }
+    </script>
   </body>
 </html>

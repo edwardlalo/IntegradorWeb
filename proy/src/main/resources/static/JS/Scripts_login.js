@@ -3,6 +3,7 @@ const registerBtn = document.querySelector("#register");
 const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 
+// Funciones visuales
 loginBtn.addEventListener("click",() =>{
     loginBtn.style.backgroundColor = "#21264D";
     registerBtn.style.backgroundColor = "rgba(255,255,255,0.2)"

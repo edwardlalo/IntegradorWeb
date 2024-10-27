@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class InicioController {
-
+    // Coloca al inicio como la pagina principal
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
-        // Verificar si hay un usuario en la sesión
+        // Verificar si hay un usuario en la sesion
         if (session.getAttribute("usuario") != null) {
             model.addAttribute("usuario", session.getAttribute("usuario")); // Agrega el usuario al modelo
         }
-        return "Inicio"; // Sirve la página Inicio.html desde /templates
+        return "Inicio"; //Redirecciona al inicio
     }
 
     @GetMapping("/inicio")
     public String inicio(Model model, HttpSession session) {
-        // Verificar si hay un usuario en la sesión
+        // Verificar si hay un usuario en la sesion
         if (session.getAttribute("usuario") != null) {
             model.addAttribute("usuario", session.getAttribute("usuario")); // Agrega el usuario al modelo
         }
-        return "Inicio"; // Retorna la vista Inicio.html
+        return "Inicio"; //Redirecciona al inicio
     }
 }

@@ -7,50 +7,6 @@
     <link rel="stylesheet" href="CSS/StylesIntranet.css" />
     <link rel="stylesheet" href="CSS/StylesGeneral.css" />
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
-    <style>
-        /* Estilos para la tabla */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* Estilos para el botón */
-        .btn-imprimir {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .btn-imprimir:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -62,8 +18,7 @@
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="intranet">Principal</a></li>
-                <li><a href="intranet-ventas">Ver Registros de ventas</a></li>
-                <li><a href="intranetusu">Ver Registros de usuarios</a></li>
+                <li><a href="intranet_usuarios">Ver Registros de usuarios</a></li>
             </ul>
             <div class="logo">
                 <a href="#">
@@ -89,6 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Generar tabla con los usuarios extraidos de la bd --->
                     <tr th:each="usuario : ${usuarios}">
                         <td th:text="${usuario.id}"></td>
                         <td th:text="${usuario.correo}"></td>
@@ -96,7 +52,8 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="#" class="btn-imprimir">Imprimir tabla en Excel</a> <!-- Botón agregado -->
+            <!-- Referencia para exportar la tabla usuarios a un excel --->
+            <a href="/intranet_usuarios/exportar?format=xlsx" class="btn-imprimir">Exportar Usuarios</a> <!-- Botón agregado -->
         </div>
     </div>
     <footer class="pie-pagina">

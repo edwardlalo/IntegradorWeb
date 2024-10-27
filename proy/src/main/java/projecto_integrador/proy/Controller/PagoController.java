@@ -11,9 +11,9 @@ public class PagoController {
     public String pago(Model model, HttpSession session) {
         // Verificar si hay un usuario en la sesión
         if (session.getAttribute("usuario") != null) {
-            model.addAttribute("usuario", session.getAttribute("usuario")); // Agrega el usuario al modelo
+            model.addAttribute("usuario", session.getAttribute("usuario")); //Agrega el usuario al modelo
         }
-        return "Pago"; // Retorna la vista Pago.html
+        return "Pago"; //Redirecciona a Pago.html
     }
     
 }

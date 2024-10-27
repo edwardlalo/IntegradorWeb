@@ -24,7 +24,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional
     public void save(Usuario usuario) {
-        // Encriptar la contraseña antes de guardarla
+        //Encriptar la contraseña antes de guardarla
         String contraseñaEncriptada = passwordEncoder.encode(usuario.getContrasena());
         usuario.setContrasena(contraseñaEncriptada);
         usuarioRepository.save(usuario);

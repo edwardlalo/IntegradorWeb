@@ -39,6 +39,7 @@
         </nav>
       </header>
     <main>
+      <!-- Indicador de fecha seleccionada por el usuario -->
       <section id="fechaReserva">
         <h2>Fecha de tu reserva</h2>
         <div id="fechaSeleccionadaContainer">
@@ -57,7 +58,7 @@
           </div>
           <!-- Sector de mesas -->
         <div class="mesas-container">
-          <!-- Iterar sobre la lista de mesas -->
+          <!-- Iterar sobre la lista de mesas obtenidas de la bd-->
           <div th:each="mesa : ${mesas}" 
               th:classappend="${mesa.disponibilidad == 'disponible'} ? 'disponible mesa' : 'no-disponible mesa'">
               <span class="texto-mesa" th:text="'Mesa ' + ${mesa.numero_mesa}"></span>

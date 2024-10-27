@@ -1,5 +1,4 @@
 package projecto_integrador.proy.Model;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -7,6 +6,7 @@ import jakarta.persistence.*;
 public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //Se crean todos los elementos de la compra
     private int idCompra;
 
     @Column(name = "correo_usuario", nullable = false)
@@ -28,7 +28,6 @@ public class Compra {
     private double total;
 
     // Getters y Setters
-
     public int getIdCompra() {
         return idCompra;
     }

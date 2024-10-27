@@ -17,9 +17,9 @@ public class UsuarioControllerLista {
     @GetMapping("/lista_usuarios")
     public String listarUsuarios(Model model) {
         model.addAttribute("usuarios", usuarioServiceImpl.listarTodos());
-        return "Intranet_usuarios"; // Archivo Intranet_usuarios.html
+        return "Intranet_usuarios"; //Archivo Intranet_usuarios.html
     }
-
+    //Prepara el metodo para guardar a los usuarios en un excel
     @GetMapping(value = "/lista_usuarios", params = "format=xlsx")
     public ModelAndView listarUsuariosExcel() {
         ModelAndView modelAndView = new ModelAndView(new ListaUsuariosExcel());

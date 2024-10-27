@@ -7,6 +7,6 @@ public class LoginIntranetController {
 
     @GetMapping("/intranetlogin")
     public String Intranetlogin() {
-        return "Intranetlogin"; // Retorna la vista Login.html
+        return "Intranetlogin"; // Redirecciona al login de la intranet
     }
 }

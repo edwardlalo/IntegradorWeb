@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
-import jakarta.servlet.http.HttpSession; // Asegúrate de importar HttpSession
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UsuarioController {
@@ -15,7 +15,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    //Crear un objeto BCryptPasswordEncoder para comparar contraseñas
+    //Crea un objeto BCryptPasswordEncoder para comparar contraseñas
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @PostMapping("/registro")
@@ -23,21 +23,21 @@ public class UsuarioController {
         //Guardar el usuario
         usuarioService.save(usuario);
         model.addAttribute("mensaje", "Registro exitoso!");
-        return "Login"; // Redirige al login después del registro
+        return "Login"; //Redirecciona al login despues del registro
     }
-
+    //Se procesa el login haciendo la comparacion entre correo y contraseña
     @PostMapping("/procesarLogin")
     public String login(@ModelAttribute Usuario usuario, Model model, HttpSession session) {
         Usuario encontrado = usuarioService.findByCorreo(usuario.getCorreo());
 
         if (encontrado != null && passwordEncoder.matches(usuario.getContrasena(), encontrado.getContrasena())) {
-            // Guardar los datos del usuario en la sesión
+            //Guardar los datos del usuario en la sesión
             session.setAttribute("usuario", encontrado);
             model.addAttribute("mensaje", "Inicio de sesión exitoso!");
-            return "redirect:/inicio"; // Redirige a la página de inicio tras el login exitoso
+            return "redirect:/inicio"; //Redirecciona a la página de inicio tras el login exitoso
         } else {
             model.addAttribute("mensaje", "Credenciales incorrectas");
-            return "Login"; // Vuelve a mostrar el formulario de login si las credenciales son incorrectas
+            return "Login"; //Vuelve a mostrar el formulario de login si las credenciales son incorrectas
         }
     }
 }

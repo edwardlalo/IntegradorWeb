@@ -7,6 +7,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login() {
-        return "Login"; // Retorna la vista Login.html
+        return "Login"; // Redirecciona a Login.html
     }
 }

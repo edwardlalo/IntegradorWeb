@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LogoutController {
-    // Método para cerrar sesión
+    //Metodo para cerrar sesion
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate(); // Destruye la sesión
-        return "redirect:/inicio"; // Redirige a Inicio.html
+        session.invalidate(); //Destruye la sesion
+        return "redirect:/inicio"; //Redirige a Inicio.html
     }
 }

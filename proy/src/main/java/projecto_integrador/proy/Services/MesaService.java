@@ -11,8 +11,7 @@ public class MesaService {
 
     @Autowired
     private MesaRepository mesaRepository;
-
     public List<Mesa> obtenerMesas() {
-        return mesaRepository.findAll(); // Devuelve todas las mesas de la tabla
+        return mesaRepository.findAll(); // Con ayuda del repositorio devuelve todas las mesas de la tabla
     }
 }

@@ -8,10 +8,9 @@ import projecto_integrador.proy.Model.CompraRequest;
 @RestController
 @RequestMapping("/compras")
 public class CompraController {
-
     @Autowired
     private CompraService compraService;
-
+    // Cuando de realiza una compra este revisa los datos y evalua que todo este correcto para lanzar el mensaje
     @PostMapping("/realizar")
     public ResponseEntity<String> realizarCompra(@RequestBody CompraRequest compraRequest) {
         boolean exito = compraService.guardarCompra(compraRequest);

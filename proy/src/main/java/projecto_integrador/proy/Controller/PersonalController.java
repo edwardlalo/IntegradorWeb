@@ -15,8 +15,10 @@ public class PersonalController {
     @Autowired
     private PersonalService personalService;
 
+    // Crea un objeto de la dependencia de encriptacion
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    //Realiza el proceso de login comparando correos y contraseñas
     @PostMapping("/intranetlogin")
     public String login(@ModelAttribute("username") String correo, @ModelAttribute("password") String contrasena, Model model, HttpSession session) {
         Personal encontrado = personalService.findByCorreo(correo);
@@ -26,10 +28,10 @@ public class PersonalController {
             session.setAttribute("usuarioLogueado", encontrado);
 
             model.addAttribute("mensaje", "Inicio de sesión exitoso!");
-            return "redirect:/intranet"; // Redirige a la página de intranet tras login exitoso
+            return "redirect:/intranet";//Redirecciona a la intranet tras login exitoso
         } else {
             model.addAttribute("mensaje", "Credenciales incorrectas");
-            return "intranetlogin"; // Vuelve a mostrar el formulario de login con mensaje de error
+            return "intranetlogin";// Vuelve a mostrar el formulario de login con mensaje de error
         }
     }
 }

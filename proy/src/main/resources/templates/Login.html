@@ -31,11 +31,11 @@
           <form action="/procesarLogin" method="post">
             <div class="form-inputs">
               <div class="input-box">
-                <input type="text" class="input-field" name="correo" placeholder="Correo" required>
+                <input type="text" class="input-field" name="correo" placeholder="Correo" value="correoprueba@gmail.com" required>
                 <i class="bx bx-user icon"></i>
               </div>
               <div class="input-box">
-                <input type="password" class="input-field" name="contrasena" placeholder="Contraseña" required>
+                <input type="password" class="input-field" name="contrasena" placeholder="Contraseña" value="12345" required>
                 <i class="bx bx-lock-alt icon"></i>
               </div>
               <div class="input-box">
@@ -55,6 +55,10 @@
             <div class="intranet-access">
               <a href="/intranetlogin" class="btn-intranet">¿Trabajas aquí? Ingresa a la intranet</a>
             </div>
+          <!-- Botón de regresar al inicio -->
+          <div class="return-home">
+            <a href="/" class="btn-return">Regresar al inicio</a>
+          </div>
           </form>
           <p th:text="${mensaje}"></p> <!-- Muestra mensajes de éxito o error -->
         </div>
@@ -83,6 +87,10 @@
                   <span>Regístrate</span>
                   <i class="bx bx-right-arrow-alt"></i>
                 </button>
+                <!-- Botón de regresar al inicio -->
+                  <div class="return-home">
+                <a href="/" class="btn-return">Regresar al inicio</a>
+            </div>
               </div>
             </div>
             
@@ -95,11 +103,8 @@
           </form>
           <p th:text="${mensaje}"></p> <!-- Muestra mensajes de éxito o error -->
         </div>
-
       </div>
     </div>
-
     <script src="JS/Scripts_login.js"></script>
   </body>
-  
 </html>

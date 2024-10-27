@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Table(name = "usuarios")
 public class Usuario {
     @Id
+    //Se crean los elementos para el usuario
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String correo;

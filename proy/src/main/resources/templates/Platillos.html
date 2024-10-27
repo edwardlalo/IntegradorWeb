@@ -31,11 +31,11 @@
           <div class="auth-buttons">
             <!-- Comprobar si hay un usuario en la sesión -->
             <div th:if="${usuario != null}">
-              <span th:text="'Hola, ' + ${usuario.nombre}"></span> <!-- Muestra el nombre del usuario -->
-              <a href="/logout" class="btn logout">Cerrar Sesión</a> <!-- Botón de cerrar sesión -->
+              <span th:text="'Hola, ' + ${usuario.nombre}"></span> <!--Muestra el nombre del usuario -->
+              <a href="/logout" class="btn logout">Cerrar Sesión</a> <!--Botón de cerrar sesión -->
             </div>
             <div th:if="${usuario == null}">
-              <a href="login" class="btn login">Iniciar Sesión</a> <!-- Botón de iniciar sesión -->
+              <a href="login" class="btn login">Iniciar Sesión</a> <!--Botón de iniciar sesión -->
             </div>
           </div>
         </nav>
@@ -75,11 +75,11 @@
             </div>
         </div>
     
-        <!-- Lista de platillos a la derecha con carrusel vertical -->
+        <!--Lista de platillos a la derecha con carrusel vertical -->
         <div class="lista-platillos">
             <h3>Elige un platillo</h3>
             <div class="carrusel-platillos">
-                <!-- Iterar sobre la lista de platillos -->
+                <!--Iterar sobre la lista de platillos obtenidos de la bd -->
                 <div th:each="platillo : ${platillos}" class="platillo">
                     <div class="imagen-platillo">
                         <img th:src="@{/Imagenes/{imagen}(imagen=${platillo.imagen})}" th:alt="${platillo.nombre}" />

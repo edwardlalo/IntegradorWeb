@@ -59,6 +59,7 @@
             <br />
             <div class="form-group">
                 <div>
+                    <!-- Cuadros de texto con la info del usuario almacenado en la sesion -->
                     <label for="email">Correo electrónico</label>
                     <input type="email" id="email" th:value="${usuario.correo}" readonly class="readonly-input" />
                 </div>
@@ -74,12 +75,13 @@
         <div class="summary-section">
             <h2>Resumen de compra</h2>
             <div class="carousel" id="listaPlatillosPago">
-                <!-- Aquí se cargarán los platillos seleccionados -->
+            <!-- Aquí se cargarán los platillos seleccionados -->
             </div>
             <div class="underline-separator"></div>
             <h2>Mesas Reservadas</h2>
             <div class="carousel" id="listaMesasReservadas">
-                <ul id="mesasReservadasList"></ul> <!-- Lista de mesas reservadas -->
+                <ul id="mesasReservadasList"></ul>
+                <!-- Lista de mesas reservadas -->
             </div>
             <div class="underline-separator"></div>
             <div class="total">
@@ -96,6 +98,7 @@
             </div>
         </div>
     </div>
+    <!-- Pie de pagina -->
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
@@ -125,101 +128,6 @@
     </footer>
     <script src="JS/script.js"></script>
     <script src="JS/scriptsPlatillo.js"></script>
-    <script>
-        // Función para cargar los platillos del localStorage
-        function cargarPlatillos() {
-            const platillosSeleccionados = JSON.parse(localStorage.getItem("platillosSeleccionados")) || [];
-            const listaPlatillosPago = document.getElementById("listaPlatillosPago");
-            const subtotalElement = document.getElementById("subtotal");
-            const comisionElement = document.getElementById("comision");
-            const totalElement = document.getElementById("total");
-    
-            listaPlatillosPago.innerHTML = "";
-            let platillosString = "";
-            let subtotal = 0;
-    
-            if (platillosSeleccionados.length === 0) {
-                listaPlatillosPago.innerHTML = "<li>No hay platillos seleccionados.</li>";
-                subtotalElement.textContent = "s/ 0.00";
-                comisionElement.textContent = "s/ 0.00";
-                totalElement.textContent = "s/ 0.00";
-                return;
-            }
-    
-            platillosSeleccionados.forEach((platillo) => {
-                const listItem = document.createElement("li");
-                const precio = parseFloat(platillo.precio);
-                const cantidad = parseInt(platillo.cantidad);
-                const totalPlatillo = precio * cantidad;
-    
-                subtotal += totalPlatillo;
-                listItem.textContent = `${platillo.nombre} - S/ ${precio.toFixed(2)} x ${cantidad}`;
-                listaPlatillosPago.appendChild(listItem);
-            });
-    
-            subtotalElement.textContent = `s/ ${subtotal.toFixed(2)}`;
-            const comision = subtotal * 0.1;
-            comisionElement.textContent = `s/ ${comision.toFixed(2)}`;
-            const total = subtotal + comision;
-            totalElement.innerHTML = `<strong>s/ ${total.toFixed(2)}</strong>`;
-        }
-    
-        function pagar() {
-            const compraData = {
-                subtotal: parseFloat(document.getElementById("subtotal").textContent.replace("s/ ", "")),
-                total: parseFloat(document.getElementById("total").textContent.replace("s/ ", ""))
-            };
-    
-            fetch("/compras/insertar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(compraData)
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert(data); // Muestra la respuesta del servidor
-                if (data.includes("exitosamente")) {
-                    localStorage.removeItem("platillosSeleccionados"); // Elimina platillos seleccionados
-                    sessionStorage.removeItem("mesasSeleccionadas"); // Elimina mesas seleccionadas
-                    window.location.href = "inicio"; // Redirige a la página de inicio
-                }
-            })
-            .catch(error => {
-                alert("Error al procesar la compra.");
-                console.error("Error:", error);
-            });
-        }
-    
-        function cargarMesasReservadas() {
-            const mesasReservadas = JSON.parse(sessionStorage.getItem("mesasSeleccionadas")) || [];
-            const listaMesasReservadas = document.getElementById("mesasReservadasList");
-            listaMesasReservadas.innerHTML = "";
-    
-            let mesasString = "";
-    
-            if (mesasReservadas.length === 0) {
-                listaMesasReservadas.innerHTML = "<li>No hay mesas reservadas.</li>";
-                return;
-            }
-    
-            mesasReservadas.forEach((mesa) => {
-                mesasString += `${mesa}, `;
-                const listItem = document.createElement("li");
-                listItem.textContent = `${mesa}`;
-                listaMesasReservadas.appendChild(listItem);
-            });
-            sessionStorage.setItem("mesasString", mesasString.slice(0, -2));
-        }
-    
-        document.getElementById("pagarBtn").addEventListener("click", pagar);
-    
-        window.onload = function () {
-            cargarPlatillos();
-            cargarMesasReservadas();
-        };
-    </script>
-    
+    <script src="JS/scriptsPago.js"></script>
 </body>
 </html>

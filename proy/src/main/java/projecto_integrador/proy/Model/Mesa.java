@@ -6,13 +6,13 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "mesas")
 public class Mesa {
-
+    //Se crean los elementos para las mesas
     @Id
     private String id_mesa;
     private int numero_mesa;
     private String disponibilidad;
 
-    // Getters y Setters
+    //Getters y Setters
     public String getId_mesa() {
         return id_mesa;
     }

@@ -1,8 +1,6 @@
 package projecto_integrador.proy.Util;
-
-import java.util.List; // Asegúrate de importar java.util.List
+import java.util.List;
 import java.util.Map;
-
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -23,14 +21,14 @@ protected void buildExcelDocument(@NonNull Map<String, Object> model,
                                     @NonNull HttpServletRequest request,
                                     @NonNull HttpServletResponse response) throws Exception {
     try {
-        // Establecer el nombre del archivo de descarga
+        //Establecer el nombre del archivo de descarga
         response.setHeader("Content-Disposition", "attachment; filename=\"listado_usuarios.xlsx\"");
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 
         // Crear una nueva hoja de Excel
         Sheet hoja = workbook.createSheet("Usuarios");
 
-        // Crear la fila de cabecera
+        //Crear la fila de cabecera
         String[] columnas = {"ID", "Nombre", "Correo", "Contraseña"};
         Row filaCabecera = hoja.createRow(0);
 
@@ -38,12 +36,12 @@ protected void buildExcelDocument(@NonNull Map<String, Object> model,
             filaCabecera.createCell(i).setCellValue(columnas[i]);
         }
 
-        // Recuperar la lista de usuarios desde el modelo
+        //Recuperar la lista de usuarios desde el modelo
         @SuppressWarnings("unchecked")
         List<Usuario> usuarios = (List<Usuario>) model.get("usuarios");
 
         if (usuarios == null || usuarios.isEmpty()) {
-            // Manejar el caso de usuarios vacíos
+            //Manejar el caso de usuarios vacíos
             Row fila = hoja.createRow(1);
             fila.createCell(0).setCellValue("No hay usuarios disponibles.");
             return;
@@ -59,8 +57,8 @@ protected void buildExcelDocument(@NonNull Map<String, Object> model,
             fila.createCell(3).setCellValue(usuario.getContrasena());
         }
     } catch (Exception e) {
-        e.printStackTrace(); // Imprimir el error en la consola
-        throw e; // O lanza la excepción para que sea manejada por Spring
+        e.printStackTrace(); //Imprimir el error en la consola
+        throw e; //O lanza la excepción para que sea manejada por Spring
     }
 }
 

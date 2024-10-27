@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 @Table(name = "platillos")
 public class Platillo {
     @Id
+    //Se crean los elementos para el objeto platillo
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

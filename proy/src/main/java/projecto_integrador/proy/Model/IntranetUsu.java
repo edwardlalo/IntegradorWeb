@@ -8,6 +8,7 @@ public class IntranetUsu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //Se crean los elementos para la lista de usuarios de la intranet
     private int id;
 
     @Column(nullable = false, length = 100)
